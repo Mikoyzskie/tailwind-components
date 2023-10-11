@@ -26,7 +26,7 @@ export default function Header() {
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <Image
-              src={"/logo light.svg"}
+              src={"https://res.cloudinary.com/dhavkybgu/image/upload/v1697006905/tjyaeqa3kwdqgxdrekmk.svg"}
               alt="Zanda Logo"
               width={200}
               height={100}

@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-.not-found,.loading-container{
+/* .not-found,.loading-container{
   height: calc(100vh - 377px);
+} */
+
+@media only screen and (min-width:768px){
+  .not-found,
+    .loading-container {
+      height: calc(100vh - 377px);
+    }
 }

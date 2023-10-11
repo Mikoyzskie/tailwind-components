@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.not-found,.loading-container{
+  height: calc(100vh - 293px);
+}

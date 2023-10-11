@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import Link from "next/link"
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -16,13 +17,13 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header className="absolute top-0 inset-x-0 z-50 max-w-7xl m-auto">
       <nav
         className="flex items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
-        <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+        <div className="flex">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <Image
               src={"/logo light.svg"}
@@ -30,7 +31,7 @@ export default function Header() {
               width={200}
               height={100}
             />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -53,7 +54,7 @@ export default function Header() {
             </a>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex lg:justify-end">
           <a href="#" className="text-sm font-semibold leading-6 text-white">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>

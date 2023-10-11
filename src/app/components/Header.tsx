@@ -7,10 +7,11 @@ import Image from "next/image";
 import Link from "next/link"
 
 const navigation = [
+  { name: "Home", href: "/" },
   { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
+  { name: "Gallery", href: "#" },
   { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
+  { name: "404", href: "/404" },
 ];
 
 export default function Header() {

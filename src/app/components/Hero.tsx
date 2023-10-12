@@ -3,7 +3,7 @@
 export default function Example() {
   return (
     <>
-      <div className="bg-[url('/hero.jpg')] bg-cover bg-fixed min-h-screen">
+      <div className="bg-[url('https://res.cloudinary.com/dhavkybgu/image/upload/v1697092493/gb2bts1cghixpkclgrk6.jpg')] bg-cover bg-fixed min-h-screen">
         <div className="relative isolate px-6 py-14 lg:px-8 min-h-screen bg-black bg-opacity-40 flex items-center justify-center">
           <div
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"

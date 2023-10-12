@@ -1,35 +1,79 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link"
 
+
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Product", href: "#" },
+  { name: "About Us", href: "#" },
   { name: "Gallery", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "404", href: "/test" },
+  { name: "Distributors", href: "#" },
+  { name: "Let's Connect", href: "/test" },
 ];
+
+const logos = {
+  dark: "https://res.cloudinary.com/dhavkybgu/image/upload/v1697071900/az1vcxduttggfu3rhzyl.svg",
+  light: "https://res.cloudinary.com/dhavkybgu/image/upload/v1697006905/tjyaeqa3kwdqgxdrekmk.svg",
+}
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [show, setShow] = useState("");
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (window.scrollY <= 150) {
+        setShow("");
+      } else {
+        setShow("bg-[#F7F6F3] text-gray-900");
+      }
+
+      if (isMounted) {
+        if (currentScrollY > lastScrollY) {
+          // Scrolling up
+          setIsScrollingUp(true);
+        } else {
+          // Not scrolling up
+          setIsScrollingUp(false);
+        }
+        setLastScrollY(currentScrollY);
+      }
+
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      // Clean up the event listener when the component unmounts
+      isMounted = false;
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
-    <header className="absolute top-0 inset-x-0 z-50 max-w-7xl m-auto">
+    <header className={`fixed top-0 inset-x-0 text-white z-50 ${isScrollingUp && "down"} ${show}`}>
       <nav
-        className="flex items-center justify-between p-6 lg:px-8"
+        className=" flex items-center justify-between p-6 lg:px-8 max-w-7xl m-auto"
         aria-label="Global"
       >
         <div className="flex">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+            <span className="sr-only">Zanda</span>
             <Image
-              src={"https://res.cloudinary.com/dhavkybgu/image/upload/v1697006905/tjyaeqa3kwdqgxdrekmk.svg"}
+              src={!show ? logos.light : logos.dark}
               alt="Zanda Logo"
-              width={200}
+              width={180}
               height={100}
             />
           </Link>
@@ -37,7 +81,7 @@ export default function Header() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
@@ -49,15 +93,15 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-white"
+              className="text-sm font-semibold leading-6 "
             >
               {item.name}
             </a>
           ))}
         </div>
         <div className="hidden lg:flex lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-white">
-            Log in <span aria-hidden="true">&rarr;</span>
+          <a href="#" className="text-sm font-semibold leading-6 ">
+            Shop Now <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </nav>
@@ -68,19 +112,19 @@ export default function Header() {
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-50" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10  backdrop-filter backdrop-blur-xl bg-opacity-10 border border-gray-100">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
                 className="h-8 w-auto"
-                src="https://res.cloudinary.com/dhavkybgu/image/upload/v1697006905/tjyaeqa3kwdqgxdrekmk.svg"
+                src={logos.light}
                 alt=""
               />
             </a>
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 rounded-md p-2.5 text-white"
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Close menu</span>
@@ -94,7 +138,7 @@ export default function Header() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
                   >
                     {item.name}
                   </a>
@@ -103,7 +147,7 @@ export default function Header() {
               <div className="py-6">
                 <a
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-50"
                 >
                   Log in
                 </a>

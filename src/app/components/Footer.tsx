@@ -3,7 +3,7 @@ import Image from "next/image"
 export default function Footer() {
     return (
         <>
-            <footer className="footer p-10 bg-base-200 text-base-content">
+            <footer className="footer p-10 bg-[#F7F6F3] text-base-content">
                 <nav>
                     <header className="footer-title">About</header>
                     <a className="link link-hover">About Us</a>
@@ -36,9 +36,26 @@ export default function Footer() {
                     <a className="link link-hover">Shop</a>
                     <a className="link link-hover">Contact Us</a>
                 </nav>
+                <div></div>
 
+                <div className="w-full">
+                    <h3 className="text-3xl">Subscribe to our newsletter</h3>
+                    <p className="py-2">Stay up-to-date on our products and promotions.</p>
+                    <div className="input-wrapper">
+                        <input type="text" name="newsletter" placeholder=" " className="newsletter-input w-full p-3 mb-2 outline-none rounded-lg" />
+                        <label htmlFor="newsletter">Email</label>
+                    </div>
+                    <a
+                        href="#"
+                        className="rounded-md bg-[#d0a02b] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                        Submit
+                    </a>
+                </div>
+                <div></div>
+                <div></div>
             </footer>
-            <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
+            <footer className="footer px-10 py-4 border-t bg-[#F7F6F3] text-base-content border-base-500">
                 <aside className="items-center grid-flow-col">
                     <Image
                         src={"https://res.cloudinary.com/dhavkybgu/image/upload/v1697007190/urwwsciuik32zqzkgc4c.png"}

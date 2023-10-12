@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       <Hero />
       <div className="min-h-screen max-w-7xl m-auto">
-        <h1 className="text-center"></h1>
+        <h1 className="text-center"> </h1>
       </div>
     </div>
   );

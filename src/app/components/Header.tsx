@@ -36,7 +36,7 @@ export default function Header() {
       if (window.scrollY <= 150) {
         setShow("");
       } else {
-        setShow("bg-[#F7F6F3] text-gray-900");
+        setShow("bg-[#F7F6F3] text-black");
       }
 
       if (isMounted) {
@@ -62,7 +62,7 @@ export default function Header() {
   }, [lastScrollY]);
 
   return (
-    <header className={`fixed top-0 inset-x-0 text-white z-50 ${isScrollingUp && "down"} ${show}`}>
+    <header className={`fixed top-0 inset-x-0 z-50 ${isScrollingUp && "down"} ${show}`}>
       <nav
         className=" flex items-center justify-between p-6 lg:px-8 max-w-7xl m-auto"
         aria-label="Global"
@@ -75,6 +75,7 @@ export default function Header() {
               alt="Zanda Logo"
               width={180}
               height={100}
+              className="transition-all duration-300"
             />
           </Link>
         </div>
